@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KoalaBrew</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="landing-page">
+
+        <div class="landing-box">
+
+            <div class="koala-icon">🐨</div>
+
+            <h1>KoalaBrew</h1>
+
+            <p>
+                Premium coffee recipe manager.
+            </p>
+
+            <div class="landing-buttons">
+                <a class="primary-btn" href="{{ url_for('login') }}">
+                    Login
+                </a>
+
+                <a class="secondary-btn" href="{{ url_for('register') }}">
+                    Register
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

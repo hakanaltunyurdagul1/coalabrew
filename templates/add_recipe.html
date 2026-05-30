@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Recipe - KoalaBrew</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav class="top-navbar">
+    <div class="logo">🐨 KoalaBrew</div>
+    <div class="nav-menu">
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('add_recipe') }}">Add Recipe</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</nav>
+
+<div class="form-page">
+    <div class="landing-box form-box">
+        <div class="koala-icon">🐨</div>
+
+        <h1>Add Recipe</h1>
+        <p>Create a new coffee recipe.</p>
+
+        <form method="POST" class="clean-form">
+            <input type="text" name="title" placeholder="Recipe title" required>
+            <input type="text" name="category" placeholder="Category e.g. Latte" required>
+
+            <textarea name="ingredients" placeholder="Ingredients" required></textarea>
+            <textarea name="instructions" placeholder="Instructions" required></textarea>
+
+            <input type="number" step="0.01" name="cost" placeholder="Cost" required>
+
+            <select name="type" required>
+                <option value="Hot">Hot</option>
+                <option value="Iced">Iced</option>
+            </select>
+
+            <button type="submit">Save Recipe</button>
+        </form>
+
+        <a class="text-link" href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+    </div>
+</div>
+
+</body>
+</html>

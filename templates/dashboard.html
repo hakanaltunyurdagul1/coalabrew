@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - KoalaBrew</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav class="top-navbar">
+    <div class="logo">🐨 KoalaBrew</div>
+    <div class="nav-menu">
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('add_recipe') }}">Add Recipe</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="koala-icon">🐨</div>
+    <h1>KoalaBrew Recipes</h1>
+    <p>Brew. Create. Enjoy.</p>
+
+    <div class="hero-actions">
+        <a class="primary-btn" href="{{ url_for('add_recipe') }}">+ Add New Recipe</a>
+        <a class="secondary-btn" href="{{ url_for('logout') }}">Logout</a>
+    </div>
+
+    <form method="GET" action="{{ url_for('dashboard') }}" class="search-form">
+        <input type="text" name="search" placeholder="🔍 Search recipe..." value="{{ search }}">
+        <button type="submit">Search</button>
+    </form>
+</section>
+
+<main class="recipes-container">
+    {% if recipes %}
+        {% for recipe in recipes %}
+            <div class="recipe-card">
+                <h2>
+                    {% if recipe.favorite == 1 %}⭐{% endif %}
+                    {{ recipe.title }}
+                </h2>
+
+                <div class="recipe-row"><span>☕ Category</span><p>{{ recipe.category }}</p></div>
+                <div class="recipe-row"><span>❄️ Type</span><p>{{ recipe.type }}</p></div>
+                <div class="recipe-row"><span>🥄 Ingredients</span><p>{{ recipe.ingredients }}</p></div>
+                <div class="recipe-row"><span>📋 Instructions</span><p>{{ recipe.instructions }}</p></div>
+                <div class="recipe-row"><span>🏷️ Cost</span><p>{{ recipe.cost }} TL</p></div>
+
+                <div class="card-actions">
+                    <a class="favorite-btn" href="{{ url_for('favorite_recipe', id=recipe.id) }}">
+                        {% if recipe.favorite == 1 %}
+                            ★ Favorited
+                        {% else %}
+                            ☆ Favorite
+                        {% endif %}
+                    </a>
+
+                    <a class="edit-btn" href="{{ url_for('edit_recipe', id=recipe.id) }}">✎ Edit</a>
+                    <a class="delete-btn" href="{{ url_for('delete_recipe', id=recipe.id) }}">🗑 Delete</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="empty-text">No recipes found.</p>
+    {% endif %}
+</main>
+
+<footer>🐨 KoalaBrew © 2026</footer>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - KoalaBrew</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="landing-page">
+    <div class="landing-box small-box">
+        <div class="koala-icon">🐨</div>
+
+        <h1>Register</h1>
+        <p>Create your KoalaBrew account.</p>
+
+        <form method="POST" class="clean-form">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+
+            <button type="submit">Register</button>
+        </form>
+
+        <a class="text-link" href="{{ url_for('login') }}">Already have an account?</a>
+    </div>
+</div>
+
+</body>
+</html>
